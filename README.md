@@ -1,50 +1,94 @@
 # QIAcuity processing
 
-Utilities and project scaffolding for processing **QIAcuity digital PCR (dPCR)** output files and preparing analysis-ready tables, quality-control summaries, and downstream reports.
-
-> Status: initial repository setup. The README describes the intended project structure and workflow; update the command examples once the processing scripts are added.
+Utilities and notebooks for processing **QIAcuity digital PCR (dPCR)** output files and preparing analysis-ready tables, quality-control summaries, figures, and downstream reports.
 
 ## Overview
 
-This repository is intended to collect scripts and helper functions for working with QIAcuity dPCR exports. The main goals are:
+This repository contains raw QIAcuity export files, processed data tables, analysis notebooks, and generated figures. The main goals are:
 
-- import raw QIAcuity export files;
-- standardise sample, assay, plate, and replicate metadata;
-- validate required columns and flag malformed records;
-- calculate or collect concentration/copy-number metrics from exported data;
-- generate clean tabular outputs for statistical analysis and reporting;
-- make the processing workflow reproducible and easy to rerun.
+- collect and organise raw QIAcuity export files;
+- process and normalise assay output tables;
+- generate analysis-ready CSV/XLSX files;
+- create heatmaps, scatter plots, correlation plots, and polar-coordinate visualisations;
+- keep the QIAcuity analysis workflow reproducible.
 
 ## Repository structure
 
 ```text
 QIAcuity_processing/
+├── .ipynb_checkpoints/
+│   ├── Ultimate-checkpoint.ipynb
+│   ├── Untitled-checkpoint.ipynb
+│   ├── Untitled2-checkpoint.ipynb
+│   ├── csv parser-checkpoint.ipynb
+│   ├── graph-checkpoint.ipynb
+│   └── heatmap1-checkpoint.ipynb
+├── PROCESSED DATA/
+│   ├── TPM_RATE.xlsx
+│   ├── TPM_RATE_NORM.xlsx
+│   ├── bdf2.xlsx
+│   ├── bdf2edited_onlygood.xlsx
+│   ├── bdf2fulledited.xlsx
+│   └── fulldata.csv
+├── RAW DATA/
+│   ├── psapsgpl1-analysis.csv
+│   ├── psapsgpl3 kid tes spl si uncvsir3 hrt lun-analysis.csv
+│   ├── psapvsir2-analysis.csv
+│   ├── slccdh2-analysis.csv
+│   ├── slcvsir1-analysis.csv
+│   ├── slcvsir3 unccdh3 kid tes-analysis.csv
+│   ├── unccdh1-analysis.csv
+│   └── uncsgpl2-analysis.csv
+├── RESULTS/
+│   ├── correlations/
+│   │   ├── correlations.jpg
+│   │   ├── correlations2.jpg
+│   │   ├── correlations3.jpg
+│   │   ├── correlations4.jpg
+│   │   ├── polcoord1.png
+│   │   ├── polcoord2.png
+│   │   ├── polcoord2.svg
+│   │   ├── polcoord3.svg
+│   │   ├── polcoord4.svg
+│   │   ├── polcoord5.svg
+│   │   ├── polcoord6.svg
+│   │   ├── polcoord8.svg
+│   │   └── polcoord8=.svg
+│   ├── heatmaps/
+│   │   ├── z=1.svg
+│   │   ├── z=2.svg
+│   │   └── z=3.svg
+│   └── scatters/
+│       └── generated well-level scatter plot JPG files grouped by threshold, grouping mode, FDR alpha, test set, organ, gene, and source CSV
+├── SCRIPTS/
+│   ├── heatmap.ipynb
+│   └── scatters.ipynb
 └── README.md
 ```
 
 ## Input data
 
-Place original QIAcuity export files in `data/raw/`. Keep raw data unchanged so that results can be reproduced from the original exports.
+Original QIAcuity export files are stored in `RAW DATA/`. Keep raw data unchanged so that results can be reproduced from the original exports.
 
-Recommended file naming pattern:
+Current raw data files:
 
-```text
-YYYY-MM-DD_project_plate-or-run_description.ext
-```
-
-Example:
-
-```text
-2026-05-27_qiacuity_plate01_raw_export.csv
-```
+- `psapsgpl1-analysis.csv`
+- `psapsgpl3 kid tes spl si uncvsir3 hrt lun-analysis.csv`
+- `psapvsir2-analysis.csv`
+- `slccdh2-analysis.csv`
+- `slcvsir1-analysis.csv`
+- `slcvsir3 unccdh3 kid tes-analysis.csv`
+- `unccdh1-analysis.csv`
+- `uncsgpl2-analysis.csv`
 
 ## Expected workflow
 
 1. Export data from the QIAcuity software.
-2. Save the untouched export files in `data/raw/`.
-3. Run the processing script or notebook.
-4. Review generated QC summaries.
-5. Use files from `data/processed/` for downstream analysis.
+2. Save the untouched export files in `RAW DATA/`.
+3. Run or update the analysis notebooks in `SCRIPTS/`.
+4. Save processed tables to `PROCESSED DATA/`.
+5. Save generated figures to `RESULTS/`.
+6. Use processed CSV/XLSX files and exported figures for downstream analysis and reporting.
 
 ## Installation
 
@@ -55,7 +99,7 @@ git clone https://github.com/Somatich/QIAcuity_processing.git
 cd QIAcuity_processing
 ```
 
-If the project uses Python, create and activate a virtual environment:
+If running the notebooks locally, create and activate a Python virtual environment:
 
 ```bash
 python -m venv .venv
@@ -63,50 +107,39 @@ source .venv/bin/activate      # macOS/Linux
 # .venv\Scripts\activate       # Windows
 ```
 
-Install dependencies once `requirements.txt` is added:
-
-```bash
-pip install -r requirements.txt
-```
+Install the packages required by the notebooks. A `requirements.txt` file is not present yet, so dependencies should currently be installed manually based on notebook imports.
 
 ## Usage
 
-Add the actual processing command here once the main script is available. A future command may look like this:
+Open the notebooks in JupyterLab or Jupyter Notebook:
 
 ```bash
-python src/process_qiacuity.py \
-  --input data/raw/example_export.csv \
-  --output data/processed/example_processed.csv
+jupyter lab SCRIPTS/
 ```
 
-For exploratory analysis, use notebooks in `notebooks/` and save final tables or figures to `data/processed/` or `reports/`.
+Main notebooks:
+
+- `SCRIPTS/heatmap.ipynb` — heatmap generation and related visualisation steps;
+- `SCRIPTS/scatters.ipynb` — well-level scatter plot generation and statistical filtering.
+
+Processed outputs are stored in `PROCESSED DATA/`, and generated figures are stored in `RESULTS/`.
 
 ## Outputs
 
-Typical outputs may include:
+Current output categories include:
 
-- cleaned assay/sample tables;
-- replicate-level summaries;
-- concentration or copy-number tables;
-- QC flags and warnings;
-- figures and report-ready summaries.
+- processed Excel and CSV tables in `PROCESSED DATA/`;
+- correlation plots and polar-coordinate figures in `RESULTS/correlations/`;
+- SVG heatmaps in `RESULTS/heatmaps/`;
+- well-level scatter plot JPG files in `RESULTS/scatters/`.
 
 ## Reproducibility notes
 
-- Do not edit files in `data/raw/` manually.
-- Keep processing parameters in scripts, configuration files, or notebooks under version control.
-- Record software versions and package dependencies.
-- Use small anonymised example files for tests when possible.
-
-## Development
-
-Recommended checks before committing changes:
-
-```bash
-python -m pytest
-```
-
-If formatting or linting tools are added later, document the exact commands here.
+- Do not edit files in `RAW DATA/` manually.
+- Keep notebook parameters and processing assumptions documented.
+- When adding new scripts, document input files, output files, and required packages.
+- Consider adding a `requirements.txt` or `environment.yml` file to make the Python environment reproducible.
+- Consider moving exploratory or temporary notebook checkpoints out of version control if they are not needed.
 
 ## Data privacy
 
