@@ -1,16 +1,25 @@
 # QIAcuity processing
 
-Utilities and notebooks for processing **QIAcuity digital PCR (dPCR)** output files and preparing analysis-ready tables, quality-control summaries, figures, and downstream reports.
+This repository contains Jupyter notebooks, intermediate tables, processed data, and generated figures from the digital PCR data analysis associated with the article indexed in PubMed as **PMID: 40796890**.
 
-## Overview
+Publication link: https://pubmed.ncbi.nlm.nih.gov/40796890/
 
-This repository contains raw QIAcuity export files, processed data tables, analysis notebooks, and generated figures. The main goals are:
+## What is in this repository
 
-- collect and organise raw QIAcuity export files;
-- process and normalise assay output tables;
-- generate analysis-ready CSV/XLSX files;
-- create heatmaps, scatter plots, correlation plots, and polar-coordinate visualisations;
-- keep the QIAcuity analysis workflow reproducible.
+The repository is mostly an analysis archive. It includes:
+
+- raw QIAcuity digital PCR export files;
+- processed CSV/XLSX tables produced during the analysis;
+- Jupyter notebooks used for data processing and plotting;
+- generated figures, including heatmaps, scatter plots, and correlation plots.
+
+## Important note
+
+The notebooks are kept here for transparency and reproducibility of the analysis history. They may be outdated and are not guaranteed to run without edits in the current repository layout.
+
+After the original analysis was completed, the directory structure was manually cleaned up and reorganised. As a result, some paths inside the notebooks may no longer match the current folder names or file locations.
+
+At the time the analysis code was written and used, it worked for the data and directory structure available then. To rerun the notebooks now, expect to update paths and possibly some package/environment details.
 
 ## Repository structure
 
@@ -26,85 +35,29 @@ QIAcuity_processing/
 └── SCRIPTS/
 ```
 
-## Input data
+## Directories
 
-Original QIAcuity export files are stored in `RAW DATA/`. Keep raw data unchanged so that results can be reproduced from the original exports.
+- `RAW DATA/` — original QIAcuity digital PCR export files.
+- `PROCESSED DATA/` — processed tables generated during analysis.
+- `RESULTS/` — generated figures and visual outputs.
+- `SCRIPTS/` — Jupyter notebooks used for processing and plotting.
+- `.ipynb_checkpoints/` — automatically generated Jupyter checkpoint files.
 
-Current raw data files:
+## Reuse and rerunning
 
-- `psapsgpl1-analysis.csv`
-- `psapsgpl3 kid tes spl si uncvsir3 hrt lun-analysis.csv`
-- `psapvsir2-analysis.csv`
-- `slccdh2-analysis.csv`
-- `slcvsir1-analysis.csv`
-- `slcvsir3 unccdh3 kid tes-analysis.csv`
-- `unccdh1-analysis.csv`
-- `uncsgpl2-analysis.csv`
+This repository is best treated as a record of the analysis rather than a polished software package.
 
-## Expected workflow
+If you want to rerun the analysis:
 
-1. Export data from the QIAcuity software.
-2. Save the untouched export files in `RAW DATA/`.
-3. Run or update the analysis notebooks in `SCRIPTS/`.
-4. Save processed tables to `PROCESSED DATA/`.
-5. Save generated figures to `RESULTS/`.
-6. Use processed CSV/XLSX files and exported figures for downstream analysis and reporting.
-
-## Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/Somatich/QIAcuity_processing.git
-cd QIAcuity_processing
-```
-
-If running the notebooks locally, create and activate a Python virtual environment:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate      # macOS/Linux
-# .venv\Scripts\activate       # Windows
-```
-
-Install the packages required by the notebooks. A `requirements.txt` file is not present yet, so dependencies should currently be installed manually based on notebook imports.
-
-## Usage
-
-Open the notebooks in JupyterLab or Jupyter Notebook:
-
-```bash
-jupyter lab SCRIPTS/
-```
-
-Main notebooks:
-
-- `SCRIPTS/heatmap.ipynb` — heatmap generation and related visualisation steps;
-- `SCRIPTS/scatters.ipynb` — well-level scatter plot generation and statistical filtering.
-
-Processed outputs are stored in `PROCESSED DATA/`, and generated figures are stored in `RESULTS/`.
-
-## Outputs
-
-Current output categories include:
-
-- processed Excel and CSV tables in `PROCESSED DATA/`;
-- correlation plots and polar-coordinate figures in `RESULTS/correlations/`;
-- SVG heatmaps in `RESULTS/heatmaps/`;
-- well-level scatter plot JPG files in `RESULTS/scatters/`.
-
-## Reproducibility notes
-
-- Do not edit files in `RAW DATA/` manually.
-- Keep notebook parameters and processing assumptions documented.
-- When adding new scripts, document input files, output files, and required packages.
-- Consider adding a `requirements.txt` or `environment.yml` file to make the Python environment reproducible.
-- Consider moving exploratory or temporary notebook checkpoints out of version control if they are not needed.
+1. Open the notebooks in `SCRIPTS/`.
+2. Check and update input/output paths.
+3. Install missing Python packages based on notebook imports.
+4. Run cells step by step and compare newly generated outputs with files in `PROCESSED DATA/` and `RESULTS/`.
 
 ## Data privacy
 
-QIAcuity exports may contain sample identifiers or experiment metadata. Do not commit confidential, patient-related, or proprietary raw data to the repository. Prefer anonymised demo data for examples and tests.
+The repository may contain experimental sample names or metadata from digital PCR exports. Check data sensitivity before reuse or redistribution.
 
 ## License
 
-No license has been specified yet. Add a `LICENSE` file before distributing or reusing the code outside the project team.
+This repository is distributed under the MIT License. See `LICENSE` for details.
