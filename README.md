@@ -17,53 +17,13 @@ This repository contains raw QIAcuity export files, processed data tables, analy
 ```text
 QIAcuity_processing/
 ├── .ipynb_checkpoints/
-│   ├── Ultimate-checkpoint.ipynb
-│   ├── Untitled-checkpoint.ipynb
-│   ├── Untitled2-checkpoint.ipynb
-│   ├── csv parser-checkpoint.ipynb
-│   ├── graph-checkpoint.ipynb
-│   └── heatmap1-checkpoint.ipynb
 ├── PROCESSED DATA/
-│   ├── TPM_RATE.xlsx
-│   ├── TPM_RATE_NORM.xlsx
-│   ├── bdf2.xlsx
-│   ├── bdf2edited_onlygood.xlsx
-│   ├── bdf2fulledited.xlsx
-│   └── fulldata.csv
 ├── RAW DATA/
-│   ├── psapsgpl1-analysis.csv
-│   ├── psapsgpl3 kid tes spl si uncvsir3 hrt lun-analysis.csv
-│   ├── psapvsir2-analysis.csv
-│   ├── slccdh2-analysis.csv
-│   ├── slcvsir1-analysis.csv
-│   ├── slcvsir3 unccdh3 kid tes-analysis.csv
-│   ├── unccdh1-analysis.csv
-│   └── uncsgpl2-analysis.csv
 ├── RESULTS/
 │   ├── correlations/
-│   │   ├── correlations.jpg
-│   │   ├── correlations2.jpg
-│   │   ├── correlations3.jpg
-│   │   ├── correlations4.jpg
-│   │   ├── polcoord1.png
-│   │   ├── polcoord2.png
-│   │   ├── polcoord2.svg
-│   │   ├── polcoord3.svg
-│   │   ├── polcoord4.svg
-│   │   ├── polcoord5.svg
-│   │   ├── polcoord6.svg
-│   │   ├── polcoord8.svg
-│   │   └── polcoord8=.svg
 │   ├── heatmaps/
-│   │   ├── z=1.svg
-│   │   ├── z=2.svg
-│   │   └── z=3.svg
 │   └── scatters/
-│       └── generated well-level scatter plot JPG files grouped by threshold, grouping mode, FDR alpha, test set, organ, gene, and source CSV
-├── SCRIPTS/
-│   ├── heatmap.ipynb
-│   └── scatters.ipynb
-└── README.md
+└── SCRIPTS/
 ```
 
 ## Input data
