@@ -15,23 +15,12 @@ This repository is intended to collect scripts and helper functions for working 
 - generate clean tabular outputs for statistical analysis and reporting;
 - make the processing workflow reproducible and easy to rerun.
 
-## Suggested project structure
+## Repository structure
 
 ```text
 QIAcuity_processing/
-├── data/
-│   ├── raw/              # Original QIAcuity exports; do not edit manually
-│   ├── interim/          # Intermediate processed files
-│   └── processed/        # Final analysis-ready outputs
-├── notebooks/            # Exploratory analysis notebooks
-├── reports/              # Generated reports, figures, and QC summaries
-├── src/                  # Processing code
-├── tests/                # Unit tests and small test fixtures
-├── README.md
-└── requirements.txt      # Python dependencies, if using Python
+└── README.md
 ```
-
-The exact structure can be adjusted as the repository grows.
 
 ## Input data
 
